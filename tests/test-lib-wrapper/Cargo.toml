@@ -1,0 +1,10 @@
+[package]
+name = "test-lib-wrapper"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+c-lib-utils = { path = "../../c-lib-utils" }
+
+[lib]
+crate-type = ["cdylib"]
