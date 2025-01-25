@@ -12,7 +12,7 @@ pub extern "C" fn add(a: c_int, b: c_int) -> c_int {
 // 0 = success 1 = failure
 #[no_mangle]
 pub extern "C" fn print_two_statements(a: *mut c_char, b: *mut c_char) -> c_int {
-    //  TODO => translate the c_char pointers to rust strings (should have two match statements per pointer)
+    // TODO => translate the c_char pointers to rust strings (should have two match statements per pointer)
     // check if the pointers are null => return 1 if null
     // convert to rust strings if not null => return 1 if conversion fails
     println!("First statement: {:?}", a);
