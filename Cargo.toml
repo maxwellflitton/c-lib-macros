@@ -1,4 +1,7 @@
 [workspace]
 resolver = "2"
-members = ["c-lib-utils"
-, "tests/test-lib-wrapper", "tests/test-runner"]
+members = [
+    "c-lib-utils",
+    "tests/test-lib-wrapper",
+    "tests/test-runner",
+]
