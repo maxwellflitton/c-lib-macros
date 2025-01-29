@@ -1,5 +1,5 @@
 # c-lib-macros
-This library contains macros for raw C FFI bindings. This will reduce boilerplate code allowing developers to more easily write Rust code that interfaces with C. The C interface can act as an intermediate language between Rust and other programming languages, allowing Rust functions to be called from other languages. This will therefore allow Rust libraries to be more easily exposed to other languages.
+A Rust library that simplifies C Foreign Function Interface (FFI) development by providing macros for raw C bindings. It automates the generation of safe bindings between Rust and C, reducing boilerplate code and potential safety issues. By using C as an intermediate layer, the macros enable Rust code to be more easily integrated with multiple programming languages.
 
 # Contents
 - `c-lib-macros` is the library for the macros
