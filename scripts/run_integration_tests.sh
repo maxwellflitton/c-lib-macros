@@ -21,4 +21,4 @@ echo "test-lib-wrapper built"
 cp target/release/libtest_lib_wrapper.dylib tests/assets/
 echo "test-lib-wrapper copied to tests/assets"
 
-cargo run -p test-runner
+cargo test -p test-runner

@@ -1,8 +1,10 @@
 use std::os::raw::{c_char, c_int};
+use std::ffi::CStr;
 
 
-// when you compile a binary, the compiler moves stuff around and renames things to optimize it
-// no mange tells the compiler not to do that so we can directly interact with the function
+// when you compile a binary, the compiler moves stuff around and renames things to optimize it (called mangling)
+// no mangle tells the compiler not to do that to preserve the original name of the function, so when the code is compiled, the C code can still call the function. C is unable to to find mangled function names.
+// more info: https://medium.com/@comsamtom/the-mangle-in-rust-language-512ee113dd73
 #[no_mangle]
 pub extern "C" fn add(a: c_int, b: c_int) -> c_int {
     a + b
@@ -12,10 +14,22 @@ pub extern "C" fn add(a: c_int, b: c_int) -> c_int {
 // 0 = success 1 = failure
 #[no_mangle]
 pub extern "C" fn print_two_statements(a: *mut c_char, b: *mut c_char) -> c_int {
-    // TODO => translate the c_char pointers to rust strings (should have two match statements per pointer)
-    // check if the pointers are null => return 1 if null
-    // convert to rust strings if not null => return 1 if conversion fails
-    println!("First statement: {:?}", a);
-    println!("Second statement: {:?}", b);
+    let name_str = match a.is_null() {
+        true => return 1,
+        false => match unsafe { CStr::from_ptr(a) }.to_str() {
+            Ok(s) => s.to_string(),
+            Err(_) => return 1,
+        },
+    };
+
+    let age_str = match b.is_null() {
+        true => return 1,
+        false => match unsafe { CStr::from_ptr(b) }.to_str() {
+            Ok(s) => s.to_string(),
+            Err(_) => return 1,
+        },
+    };
+    println!("First statement: {:?}", name_str);
+    println!("Second statement: {:?}", age_str);
     0
 }
