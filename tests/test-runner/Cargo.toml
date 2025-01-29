@@ -3,5 +3,9 @@ name = "test-runner"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "test_runner"
+path = "src/lib.rs"
+
 [dependencies]
 libloading = "0.8.6"

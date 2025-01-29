@@ -1,5 +1,5 @@
 # c-lib-macros
-A library for supplying macros for raw C interfaces
+A library for supplying macros for raw C interfaces. 
 
 
 # Integration Tests
